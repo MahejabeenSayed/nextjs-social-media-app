@@ -6,7 +6,7 @@ create table if not exists public.users (
     username citext unique not null,
     password text,
     avatar text,
-    is_adming boolean default false,
+    is_admin boolean default false,
     created_at timestamp default now(),
     updated_at timestamp default now()
 );
