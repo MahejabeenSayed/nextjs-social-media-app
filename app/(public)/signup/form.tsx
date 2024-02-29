@@ -10,14 +10,16 @@ export default function Form() {
     ""
   );
 
-  const [erros, setErrors] = useState<string[]>([]);
+  const [errors, setErrors] = useState<string[]>([]);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setErrors([]);
 
     if (password != confirmPassword) {
-      erros.push("Password does not match");
+      const newErr = [];
+      newErr.push("Password does not match");
+      setErrors(newErr);
       return;
     }
     const res = await fetch("/api/signup", {
@@ -94,6 +96,13 @@ export default function Form() {
             Sign Up
           </button>
         </div>
+        {errors.map((error) => {
+          return (
+            <div className="text-red-300" key={error}>
+              {error}
+            </div>
+          );
+        })}
       </form>
     </>
   );
