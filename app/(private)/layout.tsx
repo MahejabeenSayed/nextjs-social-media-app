@@ -14,10 +14,12 @@ export default function PrivateLayout({
   return (
     <>
       <SWRConfig value={{ fetcher: fetcher }}>
-        <div>
+        <div className="flex flex-col min-h-screen max-w-md m-auto items-center justify-center">
           <Header />
           <Navbar />
-          <main>{children}</main>
+          <main className="flex flex-col w-full p-3 bg-slate-800 text-white rounded-lg">
+            {children}
+          </main>
           <Footer />
         </div>
       </SWRConfig>

@@ -34,3 +34,31 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+ABOUT POSTGRES SQL OF LOCAL INSTALLATION
+
+username : postgres
+password : postgres
+Database : social_media
+
+command to start postgres at port 5432
+
+## psql -U postgres -p 5432 -d social_media
+
+then to add or create different tables run this command inside psql propmt
+
+## \i sql/1u.sql
+
+then to drop the tables
+
+## \i sql/1d.sql
+
+and then to upload fake data for all tables and for adding admin user enter these commands separately in directory command propmpt
+
+## tsx scripts/fake-users.ts
+
+and
+
+## tsx scripts/load-admin-data.ts admin strings123
+
+(where admin and strings123 are admin user name and password.)

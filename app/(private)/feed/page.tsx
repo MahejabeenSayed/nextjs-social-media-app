@@ -1,5 +1,3 @@
-export default async function Feed() {
-    return (
-        <div>Feed Page</div>
-    )
+export default function Feed() {
+  return <div className="">Feed Page</div>;
 }
