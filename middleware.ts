@@ -4,7 +4,10 @@ import { NextRequest, NextResponse } from "next/server";
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  const authorizedUrls = [pathname.startsWith("/api/users")];
+  const authorizedUrls = [
+    pathname.startsWith("/api/users"),
+    pathname.startsWith("/api/posts"),
+  ];
 
   if (authorizedUrls.includes(true)) {
     const jwtToken = request.cookies.get("jwt-token");
@@ -18,10 +21,7 @@ export async function middleware(request: NextRequest) {
       await jwtVerify(jwtToken.value, secret);
     } catch (err) {
       console.error(err);
-      return NextResponse.json(
-        { error: "Internal server Error" },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: "Unauthorized user" }, { status: 401 });
     }
   }
 }

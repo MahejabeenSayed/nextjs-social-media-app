@@ -1,3 +1,9 @@
+import FeedContainer from "./feedContainer";
+
 export default function Feed() {
-  return <div className="">Feed Page</div>;
+  return (
+    <div className="">
+      <FeedContainer />
+    </div>
+  );
 }
