@@ -8,7 +8,7 @@ export default function FeedContainer() {
   const pages = [];
 
   for (let i = 0; i <= page; i++) {
-    pages.push(<FeedList index={i} />);
+    pages.push(<FeedList index={i} key={i} />);
   }
 
   return (
