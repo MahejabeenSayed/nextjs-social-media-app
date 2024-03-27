@@ -3,7 +3,7 @@ import FollowingContainer from "./following-container";
 export default function Following() {
   return (
     <>
-      <div className="">Following</div>
+      <div className="">Following Page</div>
       <FollowingContainer />
     </>
   );
