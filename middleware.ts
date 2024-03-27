@@ -1,31 +1,31 @@
-import { jwtVerify } from "jose";
-import { NextRequest, NextResponse } from "next/server";
+// import { jwtVerify } from "jose";
+// import { NextRequest, NextResponse } from "next/server";
 
-export async function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname;
+// export async function middleware(request: NextRequest) {
+//   const pathname = request.nextUrl.pathname;
 
-  const authorizedUrls = [
-    pathname.startsWith("/api/users"),
-    pathname.startsWith("/api/posts"),
-  ];
+//   const authorizedUrls = [
+//     pathname.startsWith("/api/users"),
+//     pathname.startsWith("/api/posts"),
+//   ];
 
-  if (authorizedUrls.includes(true)) {
-    const jwtToken = request.cookies.get("jwt-token");
+//   if (authorizedUrls.includes(true)) {
+//     const jwtToken = request.cookies.get("jwt-token");
 
-    if (!jwtToken || !jwtToken.value) {
-      return NextResponse.json({ error: "Unauthorized user" }, { status: 401 });
-    }
+//     if (!jwtToken || !jwtToken.value) {
+//       return NextResponse.json({ error: "Unauthorized user" }, { status: 401 });
+//     }
 
-    try {
-      const secret = new TextEncoder().encode(process.env.POSTGRES_JWT_SECRET!);
-      await jwtVerify(jwtToken.value, secret);
-    } catch (err) {
-      console.error(err);
-      return NextResponse.json({ error: "Unauthorized user" }, { status: 401 });
-    }
-  }
-}
+//     try {
+//       const secret = new TextEncoder().encode(process.env.POSTGRES_JWT_SECRET!);
+//       await jwtVerify(jwtToken.value, secret);
+//     } catch (err) {
+//       console.error(err);
+//       return NextResponse.json({ error: "Unauthorized user" }, { status: 401 });
+//     }
+//   }
+// }
 
-export const config = {
-  matcher: "/:path*",
-};
+// export const config = {
+//   matcher: "/:path*",
+// };
